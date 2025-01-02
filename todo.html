@@ -3,20 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="todo.scss" />
+    <link rel="stylesheet" href="todo.css" />
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <h1>TO-Do</h1>
+    <div class="mainDiv">
+      <h1 class="mainDiv__heading">To-Do</h1>
+      <div class="mainDiv__childDiv">
+        <input
+          type="text"
+          placeholder="Enter todo"
+          name=""
+          id="inputField"
+          class="mainDiv__input"
+        />
+        <div>
+          <button id="AddButton" class="mainDiv__AddButton">Add</button>
+          <button id="DeleteAllButton" class="mainDiv__DeleteAllButton">
+            Delete All
+          </button>
+        </div>
+      </div>
 
-      <input type="text" placeholder="Enter todo" name="" id="inputField" />
-      <button id="AddButton">Add</button>
-      <button id="DeleteAllButton">Delete All</button>
-
-      <ul id="Ul"></ul>
+      <ul id="Ul" class="mainDiv__ul"></ul>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="todo.js"></script>
   </body>
 </html>

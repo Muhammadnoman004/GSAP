@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mainDiv {
+  margin: auto;
+  background-color: beige;
+  padding: 40px;
+  border-radius: 7px;
+  width: 700px;
+  margin-top: 100px;
+}
+.mainDiv__heading {
+  text-align: center;
+  padding-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.mainDiv__childDiv {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.mainDiv__input {
+  padding: 6px;
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+.mainDiv__AddButton {
+  background-color: #72bf78;
+  width: 50px;
+  border: none;
+  height: 30px;
+  border-radius: 3px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+.mainDiv__AddButton:hover {
+  border: 1px solid black;
+}
+.mainDiv__DeleteAllButton {
+  background-color: #fb4141;
+  width: 70px;
+  border: none;
+  height: 30px;
+  border-radius: 3px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+.mainDiv__DeleteAllButton:hover {
+  border: 1px solid black;
+}
+.mainDiv__ul {
+  margin-top: 30px;
+  list-style-type: none;
+  position: relative;
+}
+.mainDiv__listItem {
+  background-color: white;
+  padding: 12px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  word-break: break-all;
+}
+.mainDiv__editButton {
+  background-color: #ffe31a;
+  width: 50px;
+  border: none;
+  height: 25px;
+  border-radius: 3px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  float: inline-end;
+}
+.mainDiv__editButton:hover {
+  border: 1px solid black;
+}
+.mainDiv__deleteButton {
+  background-color: #fb4141;
+  width: 70px;
+  border: none;
+  height: 25px;
+  border-radius: 3px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  float: inline-end;
+  margin-right: 10px;
+}
+.mainDiv__deleteButton:hover {
+  border: 1px solid black;
+}/*# sourceMappingURL=todo.css.map */

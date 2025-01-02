@@ -4,15 +4,15 @@ const addBtn = document.querySelector("#AddButton");
 const deleteAllBtn = document.querySelector("#DeleteAllButton");
 
 const todoArr = [];
-let edit;
-let deleted;
-let saveEdit;
 
 const AddTodo = () => {
   const todo = inpField.value.trim();
 
   if (!todo) {
-    alert("Please enter a todo");
+    Swal.fire({
+      text: "Please enter any text!",
+      icon: "question",
+    });
     inpField.value = "";
     return;
   }
@@ -24,16 +24,26 @@ const AddTodo = () => {
 
   todoArr.push(newTodo);
 
+  if (todoArr.length >= 7) {
+    ul.style.maxHeight = "50vh";
+    ul.style.overflowY = "scroll";
+  } else {
+    ul.style.maxHeight = "50vh";
+    ul.style.overflowY = "hidden";
+  }
+
   // Create and append the new todo item
 
   const li = document.createElement("li");
   li.textContent = newTodo.title;
   li.setAttribute("data-id", newTodo.id);
+  li.setAttribute("class", "mainDiv__listItem");
   ul.appendChild(li);
 
   // Edit Button //
   const editBtn = document.createElement("button");
   editBtn.innerHTML = "Edit";
+  editBtn.setAttribute("class", "mainDiv__editButton");
   editBtn.addEventListener("click", () => editTodo(newTodo.id, li));
   li.appendChild(editBtn);
   edit = editBtn;
@@ -41,6 +51,7 @@ const AddTodo = () => {
   // Delete Button //
   const deleteBtn = document.createElement("button");
   deleteBtn.innerHTML = "Delete";
+  deleteBtn.setAttribute("class", "mainDiv__deleteButton");
   deleteBtn.addEventListener("click", () => deleteTodo(newTodo.id, li));
   li.appendChild(deleteBtn);
   deleted = deleteBtn;
@@ -63,11 +74,14 @@ const editTodo = (id, li) => {
 
   if (todo) {
     const editInp = document.createElement("input");
+    editInp.setAttribute("class", "mainDiv__input");
     editInp.type = "text";
     editInp.value = todo.title;
 
     const saveBtn = document.createElement("button");
     saveBtn.innerText = "Save";
+    saveBtn.setAttribute("class", "mainDiv__editButton");
+    saveBtn.style.backgroundColor = "#4CC9FE";
     li.innerHTML = "";
     li.appendChild(editInp);
     li.appendChild(saveBtn);
@@ -80,15 +94,42 @@ const editTodo = (id, li) => {
       }
       todo.title = updatedText;
       li.innerHTML = `${updatedText}`;
-      li.appendChild(edit);
-      li.appendChild(deleted);
+
+      const editBtn = document.createElement("button");
+      editBtn.innerText = "Edit";
+      editBtn.setAttribute("class", "mainDiv__editButton");
+      editBtn.addEventListener("click", () => editTodo(id, li));
+      li.appendChild(editBtn);
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.innerText = "Delete";
+      deleteBtn.setAttribute("class", "mainDiv__deleteButton");
+      deleteBtn.addEventListener("click", () => deleteTodo(id, li));
+      li.appendChild(deleteBtn);
     });
   }
 };
 
 const deleteAll = () => {
-  todoArr.length = 0;
-  ul.innerHTML = "";
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      todoArr.length = 0;
+      ul.innerHTML = "";
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your items has been deleted.",
+        icon: "success",
+      });
+    }
+  });
 };
 
 addBtn.addEventListener("click", () => AddTodo());
