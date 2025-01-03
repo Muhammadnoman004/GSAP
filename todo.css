@@ -95,4 +95,11 @@
 }
 .mainDiv__deleteButton:hover {
   border: 1px solid black;
+}
+
+@media screen and (max-width: 770px) {
+  .mainDiv {
+    margin-top: 200px;
+    min-height: 600px;
+  }
 }/*# sourceMappingURL=todo.css.map */
